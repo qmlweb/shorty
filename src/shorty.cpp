@@ -34,7 +34,9 @@ void Shorty::shootFull(const QString &name)
 {
     qDebug() << "Shoot full: " << name;
     QImage image = _view->grabWindow();
+    qDebug() << "Grabbed";
     image.save(name);
+    qDebug() << "Saved";
 }
 
 void Shorty::shoot(const QString &name)

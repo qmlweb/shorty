@@ -29,15 +29,20 @@ int main(int argc, char** argv)
 {
     QGuiApplication app(argc, argv);
     QQuickView view;
-    if(app.arguments().count() != 2) {
+    if(app.arguments().count() < 2) {
         qFatal("no qml script provided");
     }
-    QString script = app.arguments().at(1);
+    QString loader = app.arguments().at(1);
+
 
     Shorty shorty(&view);
     view.rootContext()->setContextProperty(QLatin1String("shorty"), &shorty);
+    if(app.arguments().count() > 3){
+        QString script = app.arguments().at(2);
+        view.rootContext()->setContextProperty(QLatin1String("script"), script);
+    }
 
-    view.setSource(QUrl::fromLocalFile(script));
+    view.setSource(QUrl::fromLocalFile(loader));
     QObject::connect(view.engine(), SIGNAL(quit()), QGuiApplication::instance(), SLOT(quit()));
 
 
