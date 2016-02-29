@@ -37,7 +37,7 @@ int main(int argc, char** argv)
 
     Shorty shorty(&view);
     view.rootContext()->setContextProperty(QLatin1String("shorty"), &shorty);
-    if(app.arguments().count() > 3){
+    if(app.arguments().count() > 2){
         QString script = app.arguments().at(2);
         view.rootContext()->setContextProperty(QLatin1String("script"), script);
     }
