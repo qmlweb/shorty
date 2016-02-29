@@ -1,3 +1,4 @@
 *.user
 *.o
-build
+build/
+bin/
